@@ -1,0 +1,74 @@
+#include<stdio.h>//standard input output header file
+#include<stdlib.h>//standard library header file
+#define size 5//initializing the array size to 5
+void push();//push function
+void pop(); //pop function
+void display(); //display function
+int top=-1,inp_arr[size],i; //initializing the top value to the -1
+int main() //main function
+{
+      int choice; //declaring  a variable
+       while(1) //checks the condition
+        {
+            printf("operation performed by the stack"); //prints the statement
+            printf("\n 1.push \n 2.pop \n 3.display \n 4.exit \n"); /*prints the                   functions*/
+            printf("enter the operation performed by the stack\n"); /*print the statement*/
+            scanf("%d",&choice); /*scans the input and places the value into the choice*/
+            switch(choice) /*scans the condition and enters into the case when it satisfies*/
+              {
+                  case 1:push(); //prints the case 1 when the condition is 1
+                  break;
+                  case 2:pop(); //prints the case 2 when the condition is 2
+                  break;
+                  case 3:display(); //prints the case 3 when the condition is 3
+                  break;
+                  case 4:exit(0);  //come out of the loop
+                  default:printf("invalid entry\n"); //prints the value
+              }
+       }
+ return 0;
+}
+void push()
+{
+    int x; //declaring the x
+    if(top==size-1) //checks the condition
+    {
+        printf("overflow\n"); //prints the value when it satisfies
+    }
+    else
+    {
+        printf("enter the value to be inserted\n");
+        scanf("%d",&x);
+        top=top+1; //increment by 1
+        inp_arr[top]=x;
+    }
+}
+void pop()
+{
+    if(top==-1) //checks the condition
+    {
+        printf("underflow\n");
+    }
+    else
+    {
+        printf("popped element is %d\n",inp_arr[top]);
+    
+        top=top-1; //decrement
+    }
+    
+}
+void display()
+{ int i;
+    if(top>-1) //checks the condition
+        {
+            printf("elementes in the stack r \n");
+            for(i=top;i>-1;i--)
+            {
+                printf("%d\n",inp_arr[i]);
+            }
+        }
+        else
+        {
+            printf("stack is empty\n");
+        }
+}
