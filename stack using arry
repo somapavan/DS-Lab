@@ -1,3 +1,4 @@
+//Implemation of stack using array
 #include<stdio.h>//standard input output header file
 #include<stdlib.h>//standard library header file
 #define size 5//initializing the array size to 5
