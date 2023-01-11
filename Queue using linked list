@@ -1,34 +1,34 @@
-#include<stdio.h>
-#include<stdlib.h>
-#define max 5
-void insert();
-void delete();
-void display();
-int queue[max];
-struct node
+#include<stdio.h> //standard input output header file
+#include<stdlib.h> //standard library header file
+#define max 5 //defining the size of queue
+void insert(); //insert function
+void delete(); //deletion function
+void display(); //display function
+int queue[max]; //initializing the queue size to max
+struct node //creating a structure to allocate space
 {
-    int data;
+    int data; //initializing the value data
     struct node *next
 };
 struct node *front,*rear;
-void insert()
+void insert()  //insert fuction
 {
     struct node *ptr;
-    int item;
-    ptr=(struct node*)malloc(sizeof(struct node));
-    if(ptr==NULL)
+    int item; //initializing the value item
+    ptr=(struct node*)malloc(sizeof(struct node)); //dynamic memory allocation using malloc function//
+    if(ptr==NULL)  //checks the condition
     {
-        printf("Overflow\n");
+        printf("Overflow\n");  //prints the statement
         return;
     }
     else
     {
-        printf("Enter the element to insert:\n");
-        scanf("%d",&item);
+        printf("Enter the element to insert:\n"); //prints the statement
+        scanf("%d",&item); //scans the input value
         ptr->data=item;
-        if(front==NULL)
+        if(front==NULL) //checks condition
         {
-            front=rear=ptr;
+            front=rear=ptr;  //initializes the value
             front->next=NULL;
             rear->next=NULL;
         } 
@@ -40,51 +40,53 @@ void insert()
         }
     }
 }
-void delete()
+void delete() //deletion function
 {
     struct node *ptr=(struct node*)malloc(sizeof(struct node));
-    if(front==NULL)
+//dynamic memory allocation using malloc function//
+
+    if(front==NULL) //checks the condition
     {
-        printf("Underflow\n");
+        printf("Underflow\n"); //prints the statement
         return;
     }   
     else
     {
         ptr=front;
-        printf("Deleted element %d\n",ptr->data);
+        printf("Deleted element %d\n",ptr->data); //prints the statement
         front=front->next;
-        free(ptr);
+        free(ptr); //frees the location
     }
 }
-void display()
+void display() //display function
 {
     struct node *ptr;
-    ptr=front;
-    if(ptr==NULL)
+    ptr=front; //assigning the value front to ptr
+    if(ptr==NULL)  //checks the condition
     {
-        printf("Underflow\n");
+        printf("Underflow\n"); //prints the statement
         return;
     }
     else
     {
-        printf("Printing the elements of queue:\n");
-        while(ptr!=NULL)
+        printf("Printing the elements of queue:\n"); //prints the statement
+        while(ptr!=NULL) //checks the condition
         {
-            printf("%d\n",ptr->data);
+            printf("%d\n",ptr->data); //prints the statement
             ptr=ptr->next;
         }
     }
 }
 int main()
 {
-    int choice;
-    while(1)
+    int choice; //initializing the value choice
+    while(1) //checks the condition
     {
-        printf("Operations performed by queue:\n");
-        printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n");
-        printf("Enter the choice\n");
-        scanf("%d",&choice);
-        switch (choice)
+        printf("Operations performed by queue:\n"); //prints the statement//
+        printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n"); //prints the statement//
+        printf("Enter the choice\n"); //prints the statement
+        scanf("%d",&choice); //scans the input values
+        switch (choice) //switch statement to check the condition
         {
             case 1:insert();
             break;
@@ -93,7 +95,7 @@ int main()
             case 3:display();
             break;
             case 4:exit(0);
-            default:printf("Invalid choice\n");
+            default:printf("Invalid choice\n"); //prints the statement
         }
     }
 }
