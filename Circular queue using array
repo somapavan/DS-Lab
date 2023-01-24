@@ -1,0 +1,88 @@
+//Program to implement a circular queue using an array
+#include<stdio.h> //standard input output header file
+#include<stdlib.h> //standard library header file
+#define n 10 //
+int front=-1,rear=-1,queue[n];
+void enqueue() //Engueue function
+{
+    int val;
+    printf("Enter the value:\n"); //prints the statement
+    scanf("%d",&val); //scans the input value
+    if((rear+1)%n==front) //checks the condition
+    {
+        printf("Overflow\n"); //prints the statement
+        return;
+    }
+    else if((front==-1)&&(rear==-1)) //checks the condition
+    {
+        front=0;
+        rear=0;
+    }
+    else if((rear==n-1)&&(front!=0)) //checks the condition
+    rear=0;
+    else
+    rear=(rear+1)%n;
+    queue[rear]=val;
+    printf("Value enqueued\n"); //prints the statement
+}
+void dequeue()
+{
+    int val;
+    if((front==-1)&&(rear==-1)) //checks the condition
+    {
+        printf("Underflow\n"); //prints the statement
+        return;
+    }
+    val=queue[front];
+    if(front==rear) //checks the condition
+    {
+        front=-1;
+        rear=-1;
+    }
+    else if(front==n-1) //checks the condition
+    front=0;
+    else
+    front=front+1;
+    printf("Value dequeued is %d\n",val); //prints the statement
+}
+void display()
+{
+    int i=front;
+    if((front==-1)&&(rear==-1)) //checks the condition
+    {
+        printf("Queue is empty"); //prints the statement
+    }
+    else
+    {
+        printf("Elements in queue are:\n"); //prints the statement
+        while(i!=rear) //checks the condition
+        {
+            printf("%d\n",queue[i]); //prints the elements of queue
+            i=(i+1)%n;
+        }
+        printf("%d",queue[i]);
+    }
+    printf("\n"); //prints the in next line
+}
+int main() //main function 
+{
+    int choice;
+    while(1) //checks the condition
+    {
+        printf("Select the operation\n"); //prints the statement
+        printf("1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n"); //prints the statement
+        scanf("%d",&choice); //scans the input value
+        switch(choice)
+        {
+            case 1:enqueue();
+            break;
+            case 2:dequeue();
+            break;
+            case 3:display();
+            break;
+            case 4:exit(0);
+            default:printf("Invalid choice\n"); //prints the statement
+        }
+    }
+    return 0;
+}
