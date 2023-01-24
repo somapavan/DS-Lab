@@ -1,0 +1,90 @@
+//Program to implement queue using array
+#include<stdio.h> //standard input output header file
+#include<stdlib.h> //standard library header file
+#define max 5 //defining the size
+void insert(); //declearing insert function
+void delete(); //declearing delete function 
+void display(); //declearing display function
+int front=-1,rear=-1; //initializing front and rear
+int queue[max]; //declearing queue
+void insert() //insert function 
+{
+     int item; //declearing variable
+     printf("Enter the element:\n"); //prints the statements
+     scanf("%d",&item); //scans the input value
+     if(rear==max-1) //checks the condition 
+     { 
+          printf("Overflow\n"); //prints the statement 
+     }
+     if(front==-1&&rear==-1) //checks the statement 
+     {
+          front=0;
+          rear=0;     
+     }
+     else 
+     {
+          rear=rear+1; //incrementing the rear value 
+     }
+     queue[rear]=item; //initializes the rear value to item
+     printf("Value inserted\n"); //prints the statement
+}
+void delete() //delete function 
+{
+      int item; //checks the condition
+      if(front==-1||front>rear) //checks the condition
+      {
+           printf("Underflow\n"); //prints trhe statement
+      }
+      else
+      {
+           item=queue[front];
+           if(front==rear) //checks the condition
+           {
+                front=-1;
+                rear=-1;
+           }
+           else
+           {
+                front=front+1; //increments the front
+           }
+           printf("Value deleted\n"); //print the statements
+      }
+}      
+void display() //display function
+{
+     int i; //checks the condition
+     if(rear==-1) //checks the condition
+     {
+          printf("Queue is empty\n");  //prints the statement 
+     }
+     else
+     {
+          printf("Elements in the queue are:\n"); //prints the statement
+          for(i=front;i<=rear;i++) //checks the condition
+          {
+               printf("\n%d\n",queue[i]); //prints the queue elements
+          }
+     }
+}
+int main() //main function
+{
+     int choice; //checks the condition
+     while(1) //checks the condition
+     {
+          printf("Operations performed by queue\n"); //prints the statement
+          printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n"); //prints the statement
+          printf("Enter the choice"); //prints the statement
+          scanf("%d",&choice); //scans the input value
+          switch(choice) //switch case statement 
+          {
+               case 1:insert(); //insert function
+               break;
+               case 2:delete(); //delete function
+               break;
+               case 3:display(); //display function
+               break;
+               case 4:exit(0);
+               default:printf("Invalid option\n"); //prints the statement
+          }
+     }
+}
