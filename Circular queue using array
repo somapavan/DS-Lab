@@ -1,11 +1,11 @@
 //Program to implement a circular queue using an array
 #include<stdio.h> //standard input output header file
 #include<stdlib.h> //standard library header file
-#define n 10 //
-int front=-1,rear=-1,queue[n];
+#define n 10 // defining the size
+int front=-1,rear=-1,queue[n]; //initializing front and rare value
 void enqueue() //Engueue function
 {
-    int val;
+    int val; //initializing the value
     printf("Enter the value:\n"); //prints the statement
     scanf("%d",&val); //scans the input value
     if((rear+1)%n==front) //checks the condition
@@ -22,18 +22,18 @@ void enqueue() //Engueue function
     rear=0;
     else
     rear=(rear+1)%n;
-    queue[rear]=val;
+    queue[rear]=val; //queue rear is initialized to val
     printf("Value enqueued\n"); //prints the statement
 }
-void dequeue()
+void dequeue() //dequeue function
 {
-    int val;
+    int val; //initializing the value
     if((front==-1)&&(rear==-1)) //checks the condition
     {
         printf("Underflow\n"); //prints the statement
         return;
     }
-    val=queue[front];
+    val=queue[front]; //val is initialized to queue of front
     if(front==rear) //checks the condition
     {
         front=-1;
@@ -42,12 +42,12 @@ void dequeue()
     else if(front==n-1) //checks the condition
     front=0;
     else
-    front=front+1;
+    front=front+1; //increments the front value
     printf("Value dequeued is %d\n",val); //prints the statement
 }
-void display()
+void display() //display function
 {
-    int i=front;
+    int i=front; //initializes i value to front 
     if((front==-1)&&(rear==-1)) //checks the condition
     {
         printf("Queue is empty"); //prints the statement
@@ -60,27 +60,27 @@ void display()
             printf("%d\n",queue[i]); //prints the elements of queue
             i=(i+1)%n;
         }
-        printf("%d",queue[i]);
+        printf("%d",queue[i]); //prints the statement
     }
     printf("\n"); //prints the in next line
 }
 int main() //main function 
 {
-    int choice;
-    while(1) //checks the condition
+    int choice; //initialing choice
+    while(1) //while loop
     {
         printf("Select the operation\n"); //prints the statement
         printf("1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n"); //prints the statement
         scanf("%d",&choice); //scans the input value
-        switch(choice)
+        switch(choice) //switch case statement
         {
-            case 1:enqueue();
+            case 1:enqueue(); //enqueue fuction
             break;
-            case 2:dequeue();
+            case 2:dequeue(); //dequeue function
             break;
-            case 3:display();
+            case 3:display(); //display fuction
             break;
-            case 4:exit(0);
+            case 4:exit(0); //exit function
             default:printf("Invalid choice\n"); //prints the statement
         }
     }
