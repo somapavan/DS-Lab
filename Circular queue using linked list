@@ -3,16 +3,16 @@
 #include<stdlib.h> //standard library header file 
 struct node
 {
-  int data;
-  struct node *next;
+  int data; //initializing the data
+  struct node *next; //initializing the  next
 };
-struct node *front=-1;
-struct node *rear=-1;  
+struct node *front=-1; //initializing the front value
+struct node *rear=-1; //initializing the rear value
 
 void enqueue(int x) //endueue function
 {
    struct node *newnode;
-   newnode=(struct node *)malloc(sizeof(struct node));
+   newnode=(struct node *)malloc(sizeof(struct node)); //malloc function
    newnode->data=x;
    newnode->next=0;
    if(rear==-1) //checks the condition 
@@ -47,7 +47,7 @@ void dequeue() //dequeue function
      free(temp);
   }
 }
-void display()
+void display() //display function
 {
 struct node* t;
 t = front;
@@ -62,30 +62,30 @@ t = t->next;
 }
 int main()
 {
-  int choice,n,i,data;
-  while(1)
+  int choice,n,i,data; //initalizing the variables
+  while(1) //while loop
   {
-    printf("\nSelect the operation\n");
-    printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n"); 
-    scanf("%d",&choice);
+    printf("\nSelect the operation\n"); //prints the statement
+    printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n"); //prints the statement
+    scanf("%d",&choice); //scans the input value
     switch(choice)
     {
-      case 1: printf("\nEnter the number of data:");
-	      scanf("%d",&n);
-	      printf("\nEnter your data");
+      case 1: printf("\nEnter the number of data:"); //prints the statement
+	      scanf("%d",&n); //scans the value
+	      printf("\nEnter your data"); //prints the statement
               i=0;
-		while(i<n){
-		scanf("%d",&data);
+		while(i<n){ //while loop
+		scanf("%d",&data); //scans the input data
 		enqueue(data);
-	        i++;
+	        i++; //increments the value
 		}
 		break;
-      case 2: dequeue();
+      case 2: dequeue(); //dequeue function
               break;
-      case 3: display();
+      case 3: display(); //display fuction
               break;
-      case 4: exit(0);
-      default: printf("Invalid choice");
+      case 4: exit(0); //exit fuction 
+      default: printf("Invalid choice"); //prints the statement
               break;
      }   
    }
